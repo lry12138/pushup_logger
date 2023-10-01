@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%block title%}
+Login in Page
+{%endblock%}
+
+{%block content%}
+<div class="container col-md-4 col-md-offset-4">
+<form method="post" action="/login">
+  <h2>Welcome back</h2>
+  <div class="mb-3">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+  </div>
+  <div class="mb-3">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name = "password"placeholder="Password">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="Check1">
+    <label class="form-check-label" for="remember_user">Remember Me</label>
+  </div>
+  <button type="submit" class="btn btn-light btn-sm">Log In</button>
+</form>
+</div>
+{%endblock%}
