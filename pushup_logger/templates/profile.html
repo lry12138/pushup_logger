@@ -4,5 +4,54 @@ Profile page
 {%endblock%}
 
 {%block content%}
-<h1> Welcome, {{name}}!</h1>
+<div>
+    <h1> Welcome, {{name}}!</h1>
+    <h4> Workout History: </h4>
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">No. of Pushups</th>
+            <th scope="col">Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for workout in workouts.items %}
+            <tr>
+                <th scope="row">{{workout.date}}</th>
+                <td>{{workout.pushups}}</td>
+                <td>{{workout.comment}}</td>
+                <td>
+                    <a href="{{url_for ('main.edit_workout', workout_id =workout.id) }}" 
+                    class="btn btn-light" 
+                    role="button"
+                    >Edit</a>
+                </td>
+
+                <td>
+                    <a href="{{url_for ('main.delete_workout', workout_id =workout.id) }}" 
+                    class="btn btn-danger" 
+                    role="button"
+                    >Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <center>
+    {% for page_num in workouts.iter_pages(left_edge=1,right_edge=1, 
+        left_current=1, right_current=1) %}{% if page_num %}
+        {% if workouts.page ==page_num %}
+        <a href="{{url_for ('main.profile', page =page_num) }}" 
+        class="btn btn-light" 
+        role="button"> {{page_num}}</a>
+        {% else %}
+        <a href="{{url_for ('main.profile', page =page_num) }}" 
+            class="btn btn-dark" 
+            role="button"> {{page_num}}</a>
+        {% endif %}
+        {%else %}...{% endif %}
+    {% endfor %}
+    </center>
+</div>
 {%endblock%}
