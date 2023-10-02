@@ -21,9 +21,6 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
           <ul class="navbar-nav mr-auto ">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{url_for ('main.index')}}">All Workouts</span></a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for ('main.profile')}}">Account</a>
             </li>
@@ -34,7 +31,7 @@
               <a class="nav-link" href="{{url_for ('auth.logout')}}">Logout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Add New Workout</a>
+              <a class="nav-link" href="{{url_for ('main.add_workout')}}">Add New Workout</a>
             </li>
             {% endif %}
             {% if not current_user.is_authenticated %}
